@@ -1,58 +1,107 @@
+# 🚗 Data Logging & Over-Acceleration Detection System
 
-## Tech Stack
+> A Raspberry Pi–powered IoT solution for real-time acceleration monitoring, cloud logging, and instant alerting via Email & SMS.
+
+![Python](https://img.shields.io/badge/Python-3-blue?logo=python)
+![Platform](https://img.shields.io/badge/Platform-Raspberry%20Pi-red?logo=raspberrypi)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![License](https://img.shields.io/badge/License-Educational-lightgrey)
+
+---
+
+## ✨ Overview
+
+This system continuously monitors motion using an **ADXL345 accelerometer** connected to a **Raspberry Pi Zero WH**. When a sudden acceleration event crosses a set threshold, it instantly:
+
+📍 Fetches the GPS location  
+📧 Sends an email alert  
+📱 Sends an SMS alert  
+☁️ Logs live data to ThingSpeak for remote monitoring
+
+Built as a hands-on IoT + embedded systems project combining **sensors, cloud APIs, and real-time alerting** — perfect for learners exploring hardware-software integration.
+
+---
+
+## 🧩 Tech Stack
 
 | Layer | Technology |
 |---|---|
-| Hardware | Raspberry Pi Zero WH, ADXL345, GSM/GPRS/GPS module, HAT |
-| Language | Python |
-| Sensor Interface | I2C, Adafruit ADXL345 library |
-| GPS Communication | UART/Serial (pyserial) |
-| Cloud Logging | ThingSpeak (HTTP API) |
-| Alerting | SMTP (email), Fast2SMS (SMS) |
-| Enclosure Design | AutoCAD (3D modeling) |
-| OS | Raspberry Pi OS (Linux) |
+| 🖥️ Hardware | Raspberry Pi Zero WH, ADXL345, GSM/GPRS/GPS module |
+| 🐍 Language | Python |
+| 🔗 Sensor Interface | I2C, Adafruit ADXL345 library |
+| 📡 GPS Communication | UART/Serial (pyserial) |
+| ☁️ Cloud Logging | ThingSpeak (HTTP API) |
+| 🚨 Alerting | SMTP (Email), Fast2SMS (SMS) |
+| 🧱 Enclosure | AutoCAD 3D Design |
+| 💻 OS | Raspberry Pi OS (Linux) |
 
-## How It Works
+---
 
-1. Initialize the ADXL345 sensor and GPS serial connection.
-2. Continuously sample acceleration on X, Y, Z axes and average 5 readings to reduce noise.
-3. Compute magnitude: `√(x² + y² + z²)`, then subtract 9.8 m/s² to isolate net (dynamic) acceleration.
-4. Push the reading to ThingSpeak for live monitoring.
-5. If net acceleration exceeds the configured threshold, fetch GPS coordinates, build a Google Maps link, and send an alert via email and SMS containing timestamp, acceleration value, and location.
+## ⚙️ How It Works
 
-## Testing & Validation
+1️⃣ Initialize the ADXL345 sensor and GPS serial connection  
+2️⃣ Continuously sample X, Y, Z acceleration and average readings to reduce noise  
+3️⃣ Compute magnitude → `√(x² + y² + z²)` and subtract gravity (9.8 m/s²)  
+4️⃣ Push live data to ThingSpeak  
+5️⃣ If threshold exceeded → fetch GPS → build map link → send Email + SMS alert 🚨
 
-- Threshold testing at 5, 10, and 15 m/s² to tune sensitivity
-- Verified real-time ThingSpeak data upload and visualization
-- Verified email and SMS alert delivery with correct GPS link
-- Boundary and stress testing under continuous acceleration input
-- Extended runtime test (~3 hours) to confirm hardware stability
+---
 
-## Known Limitations
+## 📂 Repository Structure
+├── README.md
+├── Report.pdf
+├── requirements.txt
+├── .env.example
+└── src/
+├── 01_sensor_adxl345.py
+├── 02_gps_reader.py
+├── 03_thingspeak_logger.py
+├── 04_alert_sender.py
+└── 05_monitor.py
 
-- Detects acceleration events, not vehicle speed directly — the term "overspeed" in early documentation was inaccurate and has been corrected here
-- GPS/GSM connectivity affects alert reliability in low-signal areas
-- Requires physical calibration and secure mounting for accurate readings
-- Not a certified safety or legal-compliance device
+---
 
-## Future Improvements
-
-- Replace GSM/GPRS with LTE module for more reliable connectivity
-- Add local offline data buffering for network outages
-- Build a dedicated dashboard instead of relying solely on ThingSpeak
-- Add proper unit tests and CI for the Python codebase
-
-## Setup
+## 🚀 Quick Start
 
 ```bash
 git clone https://github.com/Manojkumar0709/Data-Logging-Over-Speed-Detection-For-Comprehensive-Monitoring.git
 cd Data-Logging-Over-Speed-Detection-For-Comprehensive-Monitoring
 pip install -r requirements.txt
-cp .env.example .env   # add your own ThingSpeak/SMTP/Fast2SMS credentials
-python src/monitor.py
+cp .env.example .env   # 🔑 add your ThingSpeak/SMTP/Fast2SMS credentials
+python src/05_monitor.py
 ```
 
-## Author
+---
+
+## ✅ Testing & Validation
+
+- 🎯 Threshold testing at 5, 10, and 15 m/s²
+- ☁️ Verified real-time ThingSpeak upload
+- 📧📱 Verified Email + SMS alert delivery with GPS link
+- 🔁 3-hour extended runtime stability test
+
+---
+
+## ⚠️ Known Limitations
+
+- Detects acceleration events — not literal vehicle speed
+- GPS/GSM reliability depends on signal strength
+- Requires calibration & secure mounting
+- Educational prototype, not a certified safety device
+
+---
+
+## 🔮 Future Improvements
+
+- 📶 Upgrade GSM/GPRS to LTE
+- 💾 Add offline data buffering
+- 📊 Build a custom dashboard
+- 🧪 Add unit tests & CI pipeline
+
+---
+
+## 👤 Author
 
 **Manoj Kumar Mohankumar**  
-[LinkedIn](https://www.linkedin.com/in/manojkumar-m-93996714b/) · [GitHub](https://github.com/Manojkumar0709)
+[🔗 LinkedIn](https://www.linkedin.com/in/manojkumar-m-93996714b/) · [🐙 GitHub](https://github.com/Manojkumar0709)
+
