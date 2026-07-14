@@ -47,17 +47,7 @@ Built as a hands-on IoT + embedded systems project combining **sensors, cloud AP
 
 ---
 
-## 📂 Repository Structure
-├── README.md
-├── Report.pdf
-├── requirements.txt
-├── .env.example
-└── src/
-├── 01_sensor_adxl345.py
-├── 02_gps_reader.py
-├── 03_thingspeak_logger.py
-├── 04_alert_sender.py
-└── 05_monitor.py
+
 
 ---
 
