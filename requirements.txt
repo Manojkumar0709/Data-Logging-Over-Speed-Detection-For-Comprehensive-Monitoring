@@ -1,0 +1,11 @@
+# Install all dependencies with:
+#   pip install -r requirements.txt
+
+adafruit-circuitpython-adxl34x   # ADXL345 accelerometer sensor driver
+RPi.GPIO                          # Raspberry Pi GPIO control
+board                             # CircuitPython board definitions
+busio                             # I2C/SPI communication
+pyserial                          # Serial/UART communication for GPS
+pynmea2                           # NMEA GPS sentence parser
+requests                          # HTTP requests (ThingSpeak, Fast2SMS)
+python-dotenv                     # Load credentials from .env file
