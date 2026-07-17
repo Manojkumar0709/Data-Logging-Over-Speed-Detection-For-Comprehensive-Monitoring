@@ -93,5 +93,5 @@ python src/05_monitor.py
 ## 👤 Author
 
 **Manoj Kumar Mohankumar**  
-[🔗 LinkedIn](https://www.linkedin.com/in/manojkumar-m-93996714b/) · [🐙 GitHub](https://github.com/Manojkumar0709)
+[🔗 LinkedIn](https://www.linkedin.com/in/manojkumar-m-93996714b) · [🐙 GitHub](https://github.com/Manojkumar0709)
 
